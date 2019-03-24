@@ -35,26 +35,29 @@ var data = [
   }
 ];
 
-// function adding clases to the specified elements, from categories specified in an array
-function addClassToBox(boxElement, boxCategoryList) {
-  var box = document.getElementById(boxElement);
-  box.classList.add("box");
-  for (var i = 0; i < boxCategoryList.length; i++) {
-    box.classList.add(boxCategoryList[i]);
-  }
-}
-
 // function inserting html code from the data array
 for (var i = 0; i < data.length; i++) {
   var taskBody = document.getElementById("task-body");
-  taskBody.insertAdjacentHTML(
-    "beforeend",
-    "<div id='" +
+  var boxesCode = "";
+  if (data[i].categories.length == 0) {
+    boxesCode =
+      "<div id='" +
       data[i].id +
+      "' class='box'><header>" +
+      data[i].title +
+      "</header>" +
+      data[i].content;
+  } else {
+    var boxCategories = data[i].categories.join(" ");
+    boxesCode =
+      "<div id='" +
+      data[i].id +
+      "' class='box " +
+      boxCategories +
       "'><header>" +
       data[i].title +
       "</header>" +
-      data[i].content
-  );
-  addClassToBox(data[i].id, data[i].categories);
+      data[i].content;
+  }
+  taskBody.insertAdjacentHTML("beforeend", boxesCode);
 }
