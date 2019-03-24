@@ -11,9 +11,19 @@ body {
   min-height: 100px;
   text-align: center;
   vertical-align: top;
+  opacity: 0.7;
 
   header {
     display: block;
     border-bottom: 1px solid #000;
   }
+}
+.highlighted {
+  background-color: aqua;
+}
+.special-header header {
+  color: yellow;
+}
+.important {
+  opacity: 1;
 }

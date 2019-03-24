@@ -35,6 +35,7 @@ var data = [
   }
 ];
 
+// function adding clases to the specified elements, from categories specified in an array
 function addClassToBox(boxElement, boxCategoryList) {
   var box = document.getElementById(boxElement);
   box.classList.add("box");
@@ -43,12 +44,9 @@ function addClassToBox(boxElement, boxCategoryList) {
   }
 }
 
-var taskBody = document.getElementById("task-body");
-
-/*var taskBody = document.getElementById("task_body"); */
-
+// function inserting html code from the data array
 for (var i = 0; i < data.length; i++) {
-  // create a box html code
+  var taskBody = document.getElementById("task-body");
   taskBody.insertAdjacentHTML(
     "beforeend",
     "<div id='" +
