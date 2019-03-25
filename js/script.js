@@ -38,26 +38,22 @@ var data = [
 // function inserting html code from the data array
 for (var i = 0; i < data.length; i++) {
   var taskBody = document.getElementById("task-body");
-  var boxesCode = "";
+  var boxesCodeClass = "";
   if (data[i].categories.length == 0) {
-    boxesCode =
-      "<div id='" +
-      data[i].id +
-      "' class='box'><header>" +
-      data[i].title +
-      "</header>" +
-      data[i].content;
+    boxesCodeClass = "class='box'>";
   } else {
     var boxCategories = data[i].categories.join(" ");
-    boxesCode =
-      "<div id='" +
-      data[i].id +
-      "' class='box " +
-      boxCategories +
-      "'><header>" +
-      data[i].title +
-      "</header>" +
-      data[i].content;
+    boxesCodeClass = "class='box " + boxCategories + "'>";
   }
+  var boxesCode =
+    "<div id='" +
+    data[i].id +
+    "' " +
+    boxesCodeClass +
+    "<header>" +
+    data[i].title +
+    "</header>" +
+    data[i].content;
+
   taskBody.insertAdjacentHTML("beforeend", boxesCode);
 }
